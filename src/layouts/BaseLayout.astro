@@ -56,10 +56,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Algolia Netlify Frontend -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.css" />
     <script is:inline src="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.js"></script>
-    <script is:inline>
+    <script define:vars={{ algoliaAppId, algoliaApiKey }}>
       algoliasearchNetlify({
-        appId: {JSON.stringify(algoliaAppId)},
-        apiKey: {JSON.stringify(algoliaApiKey)},
+        appId: algoliaAppId,
+        apiKey: algoliaApiKey,
         siteId: '868adc3b-9d9a-4567-ac27-c536be382ea6',
         branch: 'main',
         selector: 'div#search',
