@@ -3,8 +3,6 @@ title: "The Manhattan"
 description: "Rye whiskey, sweet vermouth, and Angostura bitters — stirred to perfection. The Manhattan is the benchmark by which all whiskey cocktails are measured."
 pubDate: 2025-01-15
 author: "Chuck Meyer"
-heroImage: "/images/manhattan.jpg"
-heroImageAlt: "A Manhattan cocktail in a coupe glass with a Luxardo cherry"
 tags: ["classic", "stirred", "whiskey"]
 spirit: "Rye Whiskey"
 glass: "Coupe"
