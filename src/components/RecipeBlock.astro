@@ -1,0 +1,46 @@
+---
+interface Props {
+  ingredients: string[];
+  instructions: string[];
+  glass: string;
+  garnish?: string;
+}
+
+const { ingredients, instructions, glass, garnish } = Astro.props;
+---
+
+<div class="grid md:grid-cols-2 gap-6 bg-stone-900 border border-stone-800 rounded-xl p-6 not-prose">
+
+  <!-- Ingredients -->
+  <div>
+    <h2 class="text-xs font-semibold uppercase tracking-widest text-amber-400 mb-4">Ingredients</h2>
+    <ul class="space-y-2">
+      {ingredients.map((ingredient) => (
+        <li class="flex items-start gap-2 text-stone-300 text-sm">
+          <span class="text-amber-600 mt-1 shrink-0">—</span>
+          {ingredient}
+        </li>
+      ))}
+    </ul>
+    <div class="mt-5 pt-5 border-t border-stone-800 space-y-1 text-sm text-stone-400">
+      <p><span class="text-stone-500">Glass:</span> {glass}</p>
+      {garnish && <p><span class="text-stone-500">Garnish:</span> {garnish}</p>}
+    </div>
+  </div>
+
+  <!-- Instructions -->
+  <div>
+    <h2 class="text-xs font-semibold uppercase tracking-widest text-amber-400 mb-4">Method</h2>
+    <ol class="space-y-3">
+      {instructions.map((step, i) => (
+        <li class="flex gap-3 text-sm text-stone-300">
+          <span class="shrink-0 w-5 h-5 rounded-full bg-amber-900/40 text-amber-400 text-xs flex items-center justify-center font-medium">
+            {i + 1}
+          </span>
+          {step}
+        </li>
+      ))}
+    </ol>
+  </div>
+
+</div>

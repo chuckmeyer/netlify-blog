@@ -1,20 +1,36 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Cocktail Chronicles</title>
-  </head>
-  <body>
-    <main>
-      <h1>Cocktail Chronicles</h1>
-      <p>A curated collection of classic and modern cocktail recipes.</p>
-      <p><em>Coming soon.</em></p>
-    </main>
-  </body>
-</html>
+<BaseLayout title="Cocktail Chronicles">
+  <!-- Hero -->
+  <section class="max-w-5xl mx-auto px-4 py-20 text-center">
+    <p class="text-amber-400 text-sm font-medium tracking-widest uppercase mb-4">Est. 2025</p>
+    <h1 class="text-5xl font-bold text-stone-50 mb-6">Cocktail Chronicles</h1>
+    <p class="text-xl text-stone-400 max-w-xl mx-auto">
+      A curated collection of classic and modern cocktail recipes — stirred, shaken, and served with intention.
+    </p>
+    <a
+      href="/blog"
+      class="inline-block mt-8 px-6 py-3 bg-amber-600 hover:bg-amber-500 text-stone-950 font-semibold rounded-lg transition-colors"
+    >
+      Browse Recipes
+    </a>
+  </section>
+
+  <!-- Latest posts -->
+  {posts.length > 0 && (
+    <section class="max-w-5xl mx-auto px-4 pb-20">
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-stone-500 mb-8">Latest Recipes</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {posts.map((post) => <PostCard post={post} />)}
+      </div>
+    </section>
+  )}
+</BaseLayout>

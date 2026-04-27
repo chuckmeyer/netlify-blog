@@ -1,0 +1,33 @@
+---
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/blog', label: 'Recipes' },
+];
+---
+
+<header class="border-b border-stone-800 bg-stone-950/80 backdrop-blur-sm sticky top-0 z-50">
+  <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="/" class="text-lg font-bold text-stone-50 tracking-tight hover:text-amber-400 transition-colors">
+      Cocktail Chronicles
+    </a>
+
+    <!-- Nav + Search -->
+    <div class="flex items-center gap-6">
+      <nav class="flex items-center gap-4">
+        {navLinks.map(({ href, label }) => (
+          <a
+            href={href}
+            class="text-sm text-stone-400 hover:text-stone-50 transition-colors"
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
+      <!-- Search widget — wired in Phase 3 -->
+      <div id="search"></div>
+    </div>
+
+  </div>
+</header>

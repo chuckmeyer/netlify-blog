@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, heroImage, heroImageAlt, spirit, glass, tags } = post.data;
+
+const formattedDate = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<a href={`/blog/${post.id}`} class="group block bg-stone-900 border border-stone-800 rounded-xl overflow-hidden hover:border-amber-800 transition-colors">
+  {heroImage && (
+    <div class="aspect-video overflow-hidden">
+      <img
+        src={heroImage}
+        alt={heroImageAlt ?? title}
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+  )}
+  <div class="p-5">
+    <div class="flex flex-wrap gap-2 mb-3">
+      <span class="text-xs font-medium bg-amber-900/40 text-amber-300 px-2 py-0.5 rounded">
+        {spirit}
+      </span>
+      <span class="text-xs bg-stone-800 text-stone-400 px-2 py-0.5 rounded">
+        {glass}
+      </span>
+    </div>
+    <h2 class="text-xl font-semibold text-stone-50 mb-2 group-hover:text-amber-400 transition-colors">
+      {title}
+    </h2>
+    <p class="text-sm text-stone-400 mb-4 line-clamp-2">{description}</p>
+    <time class="text-xs text-stone-500" datetime={pubDate.toISOString()}>
+      {formattedDate}
+    </time>
+  </div>
+</a>
