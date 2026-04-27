@@ -1,2 +1,25 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+@theme {
+  --font-display: "Abril Fatface", cursive;
+  --font-sans: "Nunito", sans-serif;
+
+  --color-cream:      #FFFBF0;
+  --color-parchment:  #EDE0C4;
+  --color-mustard:    #E8B84B;
+  --color-mustard-dk: #C99A2E;
+  --color-coral:      #E05B3A;
+  --color-coral-dk:   #C44827;
+  --color-teal:       #1B8A8A;
+  --color-teal-dk:    #146B6B;
+  --color-teal-lt:    #D6EEEE;
+  --color-charcoal:   #1C1C1C;
+  --color-muted:      #7A6F64;
+}
+
+/* Prose heading font override */
+.prose :is(h1, h2, h3, h4, h5) {
+  font-family: var(--font-display);
+  font-weight: 400;
+}

@@ -3,15 +3,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="404 | Cocktail Chronicles" description="Page not found.">
-  <section class="max-w-5xl mx-auto px-4 py-32 text-center">
-    <p class="text-6xl mb-6">🍸</p>
-    <h1 class="text-4xl font-bold text-stone-50 mb-4">404</h1>
-    <p class="text-stone-400 mb-8">This cocktail doesn't exist. Try browsing the menu.</p>
-    <a
-      href="/blog"
-      class="inline-block px-6 py-3 bg-amber-600 hover:bg-amber-500 text-stone-950 font-semibold rounded-lg transition-colors"
-    >
-      Browse Recipes
-    </a>
+  <section class="relative overflow-hidden py-32 px-4 text-center">
+    <!-- Decorative circles -->
+    <div class="pointer-events-none absolute -right-16 top-8 w-64 h-64 rounded-full bg-mustard/20"></div>
+    <div class="pointer-events-none absolute -left-20 bottom-8 w-80 h-80 rounded-full bg-coral/10"></div>
+
+    <div class="relative max-w-md mx-auto">
+      <p class="font-display text-8xl text-parchment mb-0 leading-none select-none">404</p>
+      <p class="font-display text-3xl text-charcoal -mt-4 mb-4">Shaken, not found.</p>
+      <p class="text-muted text-sm mb-10 leading-relaxed">
+        This cocktail isn't on the menu. Head back and browse what we've got.
+      </p>
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-2 bg-coral hover:bg-coral-dk text-white font-bold px-8 py-4 rounded-full transition-colors duration-200 text-sm"
+      >
+        Browse Recipes
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
   </section>
 </BaseLayout>

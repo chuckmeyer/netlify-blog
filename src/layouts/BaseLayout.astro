@@ -28,6 +28,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
 
+    <!-- Google Fonts: Abril Fatface + Nunito -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
     <title>{title}</title>
     <meta name="description" content={description} />
 
@@ -47,13 +52,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <!-- Algolia Netlify Frontend (placeholder — wired in Phase 3) -->
   </head>
-  <body class="bg-stone-950 text-stone-100 min-h-screen flex flex-col">
+  <body class="bg-cream text-charcoal min-h-screen flex flex-col font-sans">
     <Header />
     <main class="flex-1">
       <slot />
     </main>
-    <footer class="border-t border-stone-800 py-8 text-center text-sm text-stone-500">
-      <p>Cocktail Chronicles &mdash; drink responsibly.</p>
+    <footer class="border-t-4 border-parchment py-10 text-center font-sans">
+      <p class="text-muted text-sm tracking-wide">
+        Cocktail Chronicles &mdash; drink responsibly.
+      </p>
     </footer>
   </body>
 </html>

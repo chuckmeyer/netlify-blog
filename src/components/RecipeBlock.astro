@@ -9,38 +9,54 @@ interface Props {
 const { ingredients, instructions, glass, garnish } = Astro.props;
 ---
 
-<div class="grid md:grid-cols-2 gap-6 bg-stone-900 border border-stone-800 rounded-xl p-6 not-prose">
+<div class="not-prose rounded-2xl overflow-hidden shadow-sm border border-parchment">
+  <div class="grid md:grid-cols-2">
 
-  <!-- Ingredients -->
-  <div>
-    <h2 class="text-xs font-semibold uppercase tracking-widest text-amber-400 mb-4">Ingredients</h2>
-    <ul class="space-y-2">
-      {ingredients.map((ingredient) => (
-        <li class="flex items-start gap-2 text-stone-300 text-sm">
-          <span class="text-amber-600 mt-1 shrink-0">—</span>
-          {ingredient}
-        </li>
-      ))}
-    </ul>
-    <div class="mt-5 pt-5 border-t border-stone-800 space-y-1 text-sm text-stone-400">
-      <p><span class="text-stone-500">Glass:</span> {glass}</p>
-      {garnish && <p><span class="text-stone-500">Garnish:</span> {garnish}</p>}
+    <!-- Ingredients panel -->
+    <div class="bg-mustard/10 p-6 md:p-8">
+      <h2 class="font-display text-xl text-charcoal mb-5 flex items-center gap-2">
+        <span class="block w-3 h-3 rounded-full bg-mustard shrink-0"></span>
+        Ingredients
+      </h2>
+      <ul class="space-y-2.5">
+        {ingredients.map((ingredient) => (
+          <li class="flex items-start gap-3 text-sm text-charcoal leading-snug">
+            <span class="text-mustard-dk font-bold mt-0.5 shrink-0">—</span>
+            {ingredient}
+          </li>
+        ))}
+      </ul>
+      <div class="mt-6 pt-5 border-t border-mustard/30 space-y-1.5 text-sm">
+        <p class="text-charcoal">
+          <span class="font-bold text-muted uppercase text-xs tracking-wider">Glass</span>
+          <br />{glass}
+        </p>
+        {garnish && (
+          <p class="text-charcoal">
+            <span class="font-bold text-muted uppercase text-xs tracking-wider">Garnish</span>
+            <br />{garnish}
+          </p>
+        )}
+      </div>
     </div>
-  </div>
 
-  <!-- Instructions -->
-  <div>
-    <h2 class="text-xs font-semibold uppercase tracking-widest text-amber-400 mb-4">Method</h2>
-    <ol class="space-y-3">
-      {instructions.map((step, i) => (
-        <li class="flex gap-3 text-sm text-stone-300">
-          <span class="shrink-0 w-5 h-5 rounded-full bg-amber-900/40 text-amber-400 text-xs flex items-center justify-center font-medium">
-            {i + 1}
-          </span>
-          {step}
-        </li>
-      ))}
-    </ol>
-  </div>
+    <!-- Method panel -->
+    <div class="bg-coral/5 p-6 md:p-8 border-t md:border-t-0 md:border-l border-parchment">
+      <h2 class="font-display text-xl text-charcoal mb-5 flex items-center gap-2">
+        <span class="block w-3 h-3 rounded-full bg-coral shrink-0"></span>
+        Method
+      </h2>
+      <ol class="space-y-4">
+        {instructions.map((step, i) => (
+          <li class="flex gap-3 text-sm text-charcoal leading-snug">
+            <span class="shrink-0 w-6 h-6 rounded-full bg-coral text-white text-xs font-bold flex items-center justify-center mt-0.5">
+              {i + 1}
+            </span>
+            <span>{step}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
 
+  </div>
 </div>
